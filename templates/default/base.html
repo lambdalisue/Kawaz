@@ -1,3 +1,5 @@
+{% load active %}
+{% load announcement %}
 <!Doctype HTML>
 <html>
 	<head>
@@ -5,31 +7,114 @@
 		<meta name="keywords" content="札幌,ゲーム,コミュニティ,Kawaz">
 		<meta name="description" content="札幌近郊のゲーム制作者コミュニティ">
 		<title>Kawaz - {% block title %}札幌ゲーム制作者コミュニティ{% endblock %}</title>
-		{% compressed_css 'baseline' %}
-		{% compressed_js 'baseline' %}
+		<meta name="robots" content="index">
+		<link rel="shortcut icon" href="{{ STATIC_URL }}favicon.ico">
+		<link rel="apple-touch-icon" href="{{ STATIC_URL }}apple-touch-icon.png"> 
+		{% compressed_css 'default' %}
+		{% compressed_js 'default' %}
+		{% block head %}
+		{% endblock %}
 	</head>
 	<body>
+		<nav id="top"><a href="#bottom">ページボトムにスクロール</a></nav>
 		<header>
-			<h1><a href="/">Kawaz</a></h1>
+			<figure id="logo">
+				<h1><a href="/">Kawaz</a></h1>
+				<h3>札幌ゲーム製作者コミュニティ</h3>
+			</figure>
+			<figure id="search">
+				<form action="{{ SEARCH_URL }}" method="get">
+					<input type="text" id="id_q" name="q">
+					<input type="submit" id="id_submit" value="検索">
+				</form>
+			</figure><!-- /search -->
 		</header>
-		<figure id="messages">
+		<aside id="messages">
 			<ul>
 				{% for message in messages %}
 				<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
 				{% endfor %}
 			</ul>
-		</figure><!-- /messages -->
+		</aside><!-- /messages -->
 		<nav id="authentification">
 			<span id="version">Kawaz ver. {% settings 'VERSION' %}</span>
 			<ul class="hlist">
-				{% if user.is_authenticated %}
-				{% if user.is_promotable and user.is_superuser %}
-				<li><a href="{% reverse 'permissiongroup-demote}?%next={{ request.path }}">スタッフに降格</a></li>
-				{% endif %}
-				{% endif %}
+				
 			</ul>
+		</nav><!-- /authentification -->
+		<nav id="breadcrumbs">
+			<ol class="hlist">
+				{% block breadcrumbs %}
+				<li class="home"><a href="/">Home</a></li>
+				{% endblock %}
+			</ol>
+		</nav><!-- /breadcrumbs -->
+		<nav id="navigation">
+			<ul class="hlist">
+				<li id="navigation-home" class="{% active request '^/$' %}{% active request '^/messages/' %}"><a href="/">Home</a></li>
+				<li id="navigation-projects" class="{% active request '^/projects/' %}"><a href="">Projects</a></li>
+				<li id="navigation-events" class="{% active request '^/events/' %}"><a href="">Events</a></li>
+				<li id="navigation-blogs" class="{% active request '^/blogs/' %}"><a href="">Blogs</a></li>
+				<li id="navigation-members" class="{% active request '^/members/' %}"><a href="">Members</a></li>
+				<li id="navigation-threads" class="{% active request '^/threads/' %}"><a href="">Threads</a></li>
+				<li id="navigation-commons" class="{% active request '^/commons/' %}"><a href="">Commons</a></li>
+			</ul>
+		</nav><!-- /navigation -->
+		<hr>
+		<aside id="dock">
+			{% block dock %}
+			{% endblock %}
+		</aside><!-- /dock -->
+		<section id="content">
 			{% block content %}
-			{% endblock content %}
-		</nav>
+			{% endblock %}
+		</section><!-- /content -->
+		<footer>
+			<section id="announcements">
+				<h3>お知らせ一覧</h3>
+				{% get_announcements request as announcements %}
+				<table>
+					{% for announcement in announcements|slice:":5" %}
+					<tr>
+						<th>{{ announcement.created_at|date:"m/d (D)" }}</th>
+						<td><a href="{{ announcement.get_absolute_url }}">{{ announcement.title }}</a></td>
+					</tr>
+					{% empty %}
+					<tr>
+						<td>お知らせは一つもありません</td>
+					</tr>
+					{% endfor %}
+				</table>
+				<p class="more"><a href="{% url announcements-announcement-list %}">すべてのお知らせ</a></p>
+			</section><!-- /announcements -->
+			<section id="information">
+				<h3>インフォメーション</h3>
+				<ul>
+					<li><a href="/about/">Kawazについて</a></li>
+					<li><a href="/rules/">利用規約</a></li>
+					<li><a href="/privacy-policy/">プライバシーポリシー</a></li>
+					<li><a href="">お問合せ</a>
+					<li><a href="/help/">ヘルプ</a></li>
+				</ul>
+			</section><!-- /information -->
+			<section id="advanced">
+				<h3>もっとKawaz</h3>
+				<ul>
+					<li><a href="/services/">サービス概要</a></li>
+					<li><a href="/beta/">ベータ版機能</a></li>
+					<li><a href="/developer/">開発者向け情報</a></li>
+					<li><a href="/bugwaz/1/">障害情報</a></li>
+					{% if user.is_authenticated %}
+					<li><a href="{% url registration_withdraw %}">Kawazから退会する</a></li>
+					{% endif %}
+				</ul>
+			</section><!-- /advanced -->
+			<section id="copyright">
+				<small>Thanks to <a href="http://p.yusukekamiyamane.com/">p.yusukekamiyamane</a> about them nice icon packs.</small>
+				<small>This website is powered by <a href="http://www.djangoproject.com/">Django</a></small>
+				<address>Copyright&copy; 2009-{% now "Y" %} Kawaz allright reserved.</address>
+			</section>
+		</footer>
+		<nav id="bottom"><a href="#top">ページトップにスクロール</a></nav>
 	</body>
 </html>
