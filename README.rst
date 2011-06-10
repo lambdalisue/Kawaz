@@ -35,6 +35,7 @@ Django 関連資料
 -	`Django-haystack Documentation <http://docs.haystacksearch.org/dev/>`_
 -	`Django-compress Documentation <http://code.google.com/p/django-compress/>`_
 -	`Django-reversetag Documentation <https://github.com/ulope/django-reversetag/blob/master/README.rst>`_
+-   `Django-registration Documentation <https://bitbucket.org/ubernostrum/django-registration/wiki/Home>`_
 -	`Django-markupfield Documentation <http://pypi.python.org/pypi/django-markupfield>`_
 -	`Django-filter Documentation <https://github.com/alex/django-filter>`_
 -	`Django-mfw Documentation <https://github.com/lambdalisue/django-mfw>`_
