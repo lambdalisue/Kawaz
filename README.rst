@@ -16,13 +16,13 @@ Kawaz 3rd Portal Websiteの開発場所です。暇がそんなに無いので�
 最終的に追加する予定の機能
 ======================================
 
--	``django-mfw``を用いた携帯・スマートフォン対応
--	``django-piston``を用いたKawaz APIの作成
--	``django-markupfield``を用いた複数フォーマット対応の入力欄
+-	``django-mfw`` を用いた携帯・スマートフォン対応
+-	``django-piston`` を用いたKawaz APIの作成
+-	``django-markupfield`` を用いた複数フォーマット対応の入力欄
 	（Markdown, Texlie, RestructuredText, HTMLなどのフォーマットを
 	ユーザーが投稿時に自由にいじれるようにする。それに合わせてMarkItUpの
 	スキンやセットを自動変更）
--	``Akismet``を用いたスパムコメントやスパム投稿の排除
+-	``Akismet`` を用いたスパムコメントやスパム投稿の排除
 -	Kawaz内宣伝システムの構築（現在ハードコーディングで行っている作業）
 -	Kawaz内バージョン管理システム（Git, Mercurial, Subversionなど）
 -	全体のUIデザインの見直し。不要なサイドバーをトグル可能もしくは排除
@@ -39,9 +39,9 @@ Pythonの技能アップの為に以下に上げるコーディングスタイ�
 Django 関連資料
 =====================================
 次期KawazではDjango 1.3に完全移行する予定なのでドキュメントに目を通すこと。特に
-`Class-based generic view <https://docs.djangoproject.com/en/1.3/topics/class-based-views/>`_, 
-`The staticfiles app <https://docs.djangoproject.com/en/1.3/ref/contrib/staticfiles/>`_および
-`Logging <https://docs.djangoproject.com/en/1.3/topics/logging/>`_は大きな変更もしくは新しい考え方
+`Class-based generic view <https://docs.djangoproject.com/en/1.3/topics/class-based-views/>`_ ,
+`The staticfiles app <https://docs.djangoproject.com/en/1.3/ref/contrib/staticfiles/>`_ および
+`Logging <https://docs.djangoproject.com/en/1.3/topics/logging/>`_ は大きな変更もしくは新しい考え方
 として加わった部分なので**必ず目を通す**こと。また以下に挙げているライブラリーで使い方がわからない物に関しては
 一度は目を通すこと。
 
@@ -83,5 +83,5 @@ JavaScript 関連資料
 ======================================
 テストなどを書く場合に利用できる長文などの便利リンク集
 
--	｀面白い長文コピペ貼るスレ <http://jbbs.livedoor.jp/game/36824/storage/1198134026.html>`_
+-	`面白い長文コピペ貼るスレ <http://jbbs.livedoor.jp/game/36824/storage/1198134026.html>`_
 -	`おすすめ2ch長文コピペ <http://d.hatena.ne.jp/maname/20071122>`_
