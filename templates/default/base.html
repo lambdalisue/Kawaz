@@ -1,0 +1,35 @@
+<!Doctype HTML>
+<html>
+	<head>
+		<meta charset=utf8>
+		<meta name="keywords" content="札幌,ゲーム,コミュニティ,Kawaz">
+		<meta name="description" content="札幌近郊のゲーム制作者コミュニティ">
+		<title>Kawaz - {% block title %}札幌ゲーム制作者コミュニティ{% endblock %}</title>
+		{% compressed_css 'baseline' %}
+		{% compressed_js 'baseline' %}
+	</head>
+	<body>
+		<header>
+			<h1><a href="/">Kawaz</a></h1>
+		</header>
+		<figure id="messages">
+			<ul>
+				{% for message in messages %}
+				<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+				{% endfor %}
+			</ul>
+		</figure><!-- /messages -->
+		<nav id="authentification">
+			<span id="version">Kawaz ver. {% settings 'VERSION' %}</span>
+			<ul class="hlist">
+				{% if user.is_authenticated %}
+				{% if user.is_promotable and user.is_superuser %}
+				<li><a href="{% reverse 'permissiongroup-demote}?%next={{ request.path }}">スタッフに降格</a></li>
+				{% endif %}
+				{% endif %}
+			</ul>
+			{% block content %}
+			{% endblock content %}
+		</nav>
+	</body>
+</html>

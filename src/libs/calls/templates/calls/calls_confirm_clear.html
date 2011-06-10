@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Confirm clear calls</h2>
+<p>Do you really want to clear all calls</p>
+<form action="" method="post" class="uniForm">{% csrf_token %}
+	<div class="buttonHolder">
+		<button type="button" class="secondaryAction back-button">&lt;&lt; Cancel</button>
+		<button type="submit" class="primaryAction">Clear all</button>
+	</div>
+</form>
+{% endblock %}

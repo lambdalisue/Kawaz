@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Drafts ({{ drafts|length }})</h2>
+<ul class="drafts">
+{% for draft in drafts %}
+	<li class="draft">
+		<span class="draft-label"><a href="{{ draft.url }}">{{ draft.label }}</a></span>
+		<div class="draft-body markdown">
+			{{ draft.body }}
+		</div>
+		<p>{{ draft.updated_at }}</p>
+	</li>
+{% empty %}
+	<li>No drafts found</li>
+{% endfor %}
+</ul>
+{% endblock %}
