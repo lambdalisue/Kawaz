@@ -1,6 +1,7 @@
 Kawaz 3rd Portal Websiteの開発場所です。暇がそんなに無いのでゆっくりやっていきます。
 ひとまずの目標はDjango 1.3用に書き換えたコードで現状と同等の機能を持つまで開発を行うことです。
 
+なお次期バージョンKawazのコンセプトラフは https://github.com/lambdalisue/Kawaz/blob/master/CONCEPT/INDEX.rst を参照してください。
 
 格言
 =====================================
