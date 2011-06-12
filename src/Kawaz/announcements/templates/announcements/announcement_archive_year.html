@@ -1,0 +1,11 @@
+{% extends "announcements/base.html" %}
+
+{% block content %}
+<h2>Post Archives of {{ year }}</h2>
+
+<ul>
+	{% for month in date_list %}
+	<li><a href="{% reverse 'announcements-announcement-archive-month' year,month.month %}">Archives of {{ month|date:"b" }}</a></li>
+	{% endfor %}
+</ul>
+{% endblock %}

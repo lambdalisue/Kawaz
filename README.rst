@@ -45,7 +45,7 @@ Django 関連資料
 -	`Django-modify-history Documentation <https://github.com/lambdalisue/django-modify-history>`_
 -	`Django-universaltag Documentation <https://github.com/lambdalisue/django-universaltag>`_
 -	`Django-googlemap Documentation <https://github.com/lambdalisue/django-googlemap>`_
-
+-	`Django-breadcrumbs Documentation <https://github.com/psychotechnik/django-breadcrumbs>`_
 
 HTML5 関連資料
 ======================================

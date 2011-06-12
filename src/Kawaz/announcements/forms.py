@@ -4,5 +4,5 @@ from models import Announcement
 
 class AnnouncementForm(forms.ModelForm):
     class Meta:
-        model   = Announcement
+        model = Announcement
         fields  = ('pub_state', 'title', 'body', 'sage')

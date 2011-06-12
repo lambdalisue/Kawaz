@@ -1,0 +1,12 @@
+{% extends "announcements/base.html" %}
+
+{% block content %}
+<h2>Archives of {{ month|date:"b, Y" }</h2>
+
+{% for object in object_list %}
+<article>
+	<h3><a href="{{ object.get_absolute_url }}">{{ object }}</a></h3>
+	{{ object.body }}
+</article>
+{% endfor %}
+{% endblock %}

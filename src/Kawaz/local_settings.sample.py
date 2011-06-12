@@ -77,3 +77,6 @@ LOGGING = {
 
 # --- django-qwert
 AKISMET_API_KEY = 'your akismet api'
+
+# Mark that local_settings has loaded correctly
+LOCAL_SETTINGS_LOADED = True

@@ -72,7 +72,7 @@
 		<footer>
 			<section id="announcements">
 				<h3>お知らせ一覧</h3>
-				{% get_announcements request as announcements %}
+				{% get_announcements to announcements %}
 				<table>
 					{% for announcement in announcements|slice:":5" %}
 					<tr>

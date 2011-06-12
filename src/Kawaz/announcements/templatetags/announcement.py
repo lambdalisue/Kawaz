@@ -7,11 +7,12 @@ from ..models import Announcement
 register = template.Library()
 
 class GetAnnouncementsAs(template.Node):
-    def __init__(self, request, variable_name):
-        self.request, self.variable_name = request, variable_name
+    def __init__(self, variable_name):
+        self.variable_name = variable_name
 
     def render(self, context):
-        request = self.request.resolve(context)
+        request = template.resolve_variable('request', context)
+        # Sageが設定されていない公開されたお知らせをすべて取得する
         context[self.variable_name] = Announcement.objects.published(request).exclude(sage=True)
         return ''
 
@@ -20,14 +21,13 @@ def get_announcements(parser, token):
     u"""お知らせの一覧を表示
     
     Usage:
-        get_announcements <request> as <variable>    - Get announcement list for all and set it to <variable>
+        {% get_announcements to <variable> %}
     
     """
     bits = token.split_contents()
-    if len(bits) == 4:
-        if bits[2] != 'as':
-            raise TemplateSyntaxError("second argument to get_annonuncements tag must be 'for' or 'as'")
-        request = parser.compile_filter(bits[1])
-        variable_name = bits[3]
-        return GetAnnouncementsAs(request, variable_name)
-    raise TemplateSyntaxError("get_announcements tag has to be written as 'get_announcements <request> as <variable>")
+    if len(bits) == 3:
+        if bits[1] != 'to':
+            raise TemplateSyntaxError("first argument to %r tag must be 'to'" % bits[0])
+        variable_name = bits[2]
+        return GetAnnouncementsAs(variable_name)
+    raise TemplateSyntaxError("%r tag must has two arguments (%d given)" % (bits[0], len(bits)))
