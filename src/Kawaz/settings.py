@@ -1,7 +1,12 @@
 # -*- coding: utf-8 -*-
 # Django settings for Kawaz project.
-import sys
-import os.path
+# Load local_settings
+try:
+    from local_pre_settings import *
+except ImportError:
+    LOCAL_PRE_SETTINGS_LOADED = False
+#import sys
+#import os.path
 ROOT = os.path.join(os.path.dirname(__file__), '../../')
 #--- Add PYTHON_PATH ---------------------------------
 PYTHON_PATHS = (
@@ -11,6 +16,7 @@ for path in PYTHON_PATHS:
     if path not in sys.path: sys.path.append(path)
 #-----------------------------------------------------
 
+    
 # Version of Kawaz
 VERSION = '0.31415rc1'
 
@@ -166,6 +172,7 @@ INSTALLED_APPS = (
     # Kawaz apps
     'Kawaz.globals',
     'Kawaz.announcements',
+    
 )
 
 AUTHENTICATION_BACKENDS = (
