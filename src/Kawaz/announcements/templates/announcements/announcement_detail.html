@@ -1,5 +1,4 @@
 {% extends "announcements/base.html" %}
-{% load object_permission_tags %}
 
 {% block content %}
 <h2>{{ object.title }}</h2>
@@ -8,22 +7,4 @@
 	{{ object.body }}
 </article>
 
-<nav>
-	<ul>
-		<li>Is authenticated: {{ user.is_authenticated }}</li>
-		<li>Is staff: {{ user.is_staff }}</li>
-		<li>Is superuser: {{ user.is_superuser }}</li>
-	</ul>
-	<ul>
-		{% if 'announcements.add_announcement' of None %}
-		<li><a href="{% reverse 'announcements-announcement-create' %}">Create new announcement</a></li>
-		{% endif %}
-		{% if 'announcements.change_announcement' of object %}
-		<li><a href="{% reverse 'announcements-announcement-update' object.pk %}">Update this announcement</a></li>
-		{% endif %}
-		{% if 'announcements.delete_announcement' of object %}
-		<li><a href="{% reverse 'announcements-announcement-delete' object.pk %}">Delete this announcement</a></li>
-		{% endif %}
-	</ul>
-</nav>
 {% endblock %}
