@@ -1,12 +1,11 @@
 # -*- coding: utf-8 -*-
 # Django settings for Kawaz project.
-# Load local_settings
+
+# Load pre local_settings
 try:
     from local_pre_settings import *
 except ImportError:
     LOCAL_PRE_SETTINGS_LOADED = False
-#import sys
-#import os.path
 ROOT = os.path.join(os.path.dirname(__file__), '../../')
 #--- Add PYTHON_PATH ---------------------------------
 PYTHON_PATHS = (
@@ -108,13 +107,11 @@ TEMPLATE_LOADERS = (
     'mfw.template.loaders.flavour.Loader',
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-     'django.template.loaders.eggs.Loader',
+    'django.template.loaders.eggs.Loader',
 )
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
-    #'django.contrib.sessions.middleware.SessionMiddleware',
-    #'django.middleware.csrf.CsrfViewMiddleware',
     'mfw.middleware.session.SessionMiddleware',
     'mfw.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
