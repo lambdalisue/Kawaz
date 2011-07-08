@@ -15,15 +15,15 @@
 				<li>Is superuser: {{ user.is_superuser }}</li>
 			</ul>
 			<ul>
-				{% if 'announcements.add_announcement' of None %}
+				{% pif 'announcements.add_announcement' of None %}
 				<li><a href="{% reverse 'announcements-announcement-create' %}">Create new announcement</a></li>
-				{% endif %}
-				{% if object and 'announcements.change_announcement' of object %}
+				{% endpif %}
+				{% pif object and 'announcements.change_announcement' of object %}
 				<li><a href="{% reverse 'announcements-announcement-update' object.pk %}">Update this announcement</a></li>
-				{% endif %}
-				{% if object and 'announcements.delete_announcement' of object %}
+				{% endpif %}
+				{% pif object and 'announcements.delete_announcement' of object %}
 				<li><a href="{% reverse 'announcements-announcement-delete' object.pk %}">Delete this announcement</a></li>
-				{% endif %}
+				{% endpif %}
 			</ul>
 		</nav>
 		{% block content %}
