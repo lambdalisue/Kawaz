@@ -27,20 +27,21 @@ __date__    = '2011/06/12'
 import sys
 import os.path
 ROOT = os.path.join(os.path.dirname(__file__), '../../')
+LIB = os.path.join(ROOT, "development/packages")
 #--- Add PYTHON_PATH ---------------------------------
 PYTHON_PATHS = (
-    os.path.join(ROOT, '../e4u'),
-    os.path.join(ROOT, '../uamd'),
-    os.path.join(ROOT, '../django-qwert'),
-    os.path.join(ROOT, '../django-mfw'),
-    os.path.join(ROOT, '../django-piston'),
-    os.path.join(ROOT, '../django-modify-history'),
-    os.path.join(ROOT, '../django-universaltag'),
-    os.path.join(ROOT, '../django-markupfield'),
-    os.path.join(ROOT, '../django-object-permission'),
-    os.path.join(ROOT, '../django-googlemap-widget'),
-    os.path.join(ROOT, '../django-markitup-widget'),
-    os.path.join(ROOT, '../django-codemirror-widget'),
+    os.path.join(LIB, 'e4u'),
+    os.path.join(LIB, 'uamd'),
+    os.path.join(LIB, 'django-qwert'),
+    os.path.join(LIB, 'django-mfw'),
+    os.path.join(LIB, 'django-piston'),
+    os.path.join(LIB, 'django-modify-history'),
+    os.path.join(LIB, 'django-universaltag'),
+    os.path.join(LIB, 'django-markupfield'),
+    os.path.join(LIB, 'django-object-permission'),
+    os.path.join(LIB, 'django-googlemap-widget'),
+    os.path.join(LIB, 'django-markitup-widget'),
+    os.path.join(LIB, 'django-codemirror-widget'),
 )
 for path in PYTHON_PATHS:
     if path not in sys.path: sys.path.append(path)

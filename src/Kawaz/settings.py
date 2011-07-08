@@ -3,9 +3,9 @@
 
 # Load pre local_settings
 try:
-    from local_pre_settings import *
+    from local_site import *
 except ImportError:
-    LOCAL_PRE_SETTINGS_LOADED = False
+    LOCAL_SITE_LOADED = False
 ROOT = os.path.join(os.path.dirname(__file__), '../../')
 #--- Add PYTHON_PATH ---------------------------------
 PYTHON_PATHS = (

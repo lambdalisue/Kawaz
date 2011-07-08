@@ -1,7 +1,9 @@
 *.pyc
 *.db
 *.log
+local_site.py
 local_settings.py
 /static/collected
 /static/media
 /whoosh
+/development/packages/*
