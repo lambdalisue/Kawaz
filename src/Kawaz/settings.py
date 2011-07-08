@@ -123,9 +123,12 @@ MIDDLEWARE_CLASSES = (
     'qwert.middleware.threadlocals.ThreadLocalsMiddleware',
     'qwert.middleware.http.Http403Middleware',
     'qwert.middleware.exception.UserBasedExceptionMiddleware',
+    'openid_consumer.middleware.OpenIDMiddleware',
+    #'socialauth.middleware.FacebookConnectMiddleware',0
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
+    "socialauth.context_processors.facebook_api_key",
     "django.core.context_processors.auth",
     "django.core.context_processors.debug",
     "django.core.context_processors.i18n",
@@ -160,26 +163,34 @@ INSTALLED_APPS = (
     'registration',                 # Registration library
     'piston',                       # Django API library
     'markupfield',                  # Markup field library
+    'socialauth',                   # OpenID,OAuth Login library
+    'openid_consumer',              # required library of above
     # Github libraries
     'qwert',                        # Useful snippet collection library
     'mfw',                          # Django mobile framework library
     'object_permission',            # Object permission library
     'universaltag',                 # Django universal tagging library
     'googlemap',                    # Django googlemap library
+    # Libs apps
+    'calls',
+    'drafts',
     # Kawaz apps
     'Kawaz.globals',
     'Kawaz.announcements',
-    
 )
 
 AUTHENTICATION_BACKENDS = (
     'qwert.backends.auth.EmailAuthBackend',
     'django.contrib.auth.backends.ModelBackend',
     'object_permission.backends.ObjectPermBackend',
+    'socialauth.auth_backends.OpenIdBackend',
+    'socialauth.auth_backends.TwitterBackend',
+    'socialauth.auth_backends.FacebookBackend',
+    'socialauth.auth_backends.LinkedInBackend',
 )
 LOGIN_REDIRECT_URL  = "/"
-LOGIN_URL = "/registration/login/"
-LOGOUT_URL = "/registration/logout/"
+#LOGIN_URL = "/registration/login/"
+#LOGOUT_URL = "/registration/logout/"
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
@@ -212,6 +223,31 @@ HAYSTACK_SITECONF = 'Kawaz.search_sites'
 HAYSTACK_DEFAULT_OPERATOR = 'OR'
 HAYSTACK_SEARCH_ENGINE = 'whoosh'
 HAYSTACK_WHOOSH_PATH = os.path.join(ROOT, 'whoosh')
+
+# --- Django-Socialauth
+OPENID_REDIRECT_NEXT = '/accounts/openid/done/'
+
+OPENID_SREG = {"required": "nickname, email, fullname",
+               "optional":"postcode, country",
+               "policy_url": ""}
+
+#example should be something more like the real thing, i think
+OPENID_AX = [{"type_uri": "http://axschema.org/contact/email",
+              "count": 1,
+              "required": True,
+              "alias": "email"},
+             {"type_uri": "http://axschema.org/schema/fullname",
+              "count":1 ,
+              "required": False,
+              "alias": "fname"}]
+
+OPENID_AX_PROVIDER_MAP = {'Google': {'email': 'http://axschema.org/contact/email',
+                                     'firstname': 'http://axschema.org/namePerson/first',
+                                     'lastname': 'http://axschema.org/namePerson/last'},
+                          'Default': {'email': 'http://axschema.org/contact/email',
+                                      'fullname': 'http://axschema.org/namePerson',
+                                      'nickname': 'http://axschema.org/namePerson/friendly'}
+                          }
 
 # Load local_settings
 try:

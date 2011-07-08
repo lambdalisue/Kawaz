@@ -78,5 +78,17 @@ LOGGING = {
 # --- django-qwert
 AKISMET_API_KEY = 'your akismet api'
 
+# --- Django-Socialauth
+TWITTER_CONSUMER_KEY = ''
+TWITTER_CONSUMER_SECRET = ''
+
+FACEBOOK_APP_ID = ''
+FACEBOOK_API_KEY = ''
+FACEBOOK_SECRET_KEY = ''
+
+LINKEDIN_CONSUMER_KEY = ''
+LINKEDIN_CONSUMER_SECRET = ''
+
+
 # Mark that local_settings has loaded correctly
 LOCAL_SETTINGS_LOADED = True

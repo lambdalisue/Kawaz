@@ -45,6 +45,8 @@ install django-haystack
 install django-compress
 install django-reversetag
 install django-pagination
+install git+git://github.com/uswaretech/Django-Socialauth.git Django-Socialauth
+sudo pip install `wget -q -O - https://raw.github.com/uswaretech/Django-Socialauth/master/docs/requirements.txt`
 install git+git://github.com/alex/django-filter.git django-filter
 install git+git://github.com/psychotechnik/django-breadcrumbs.git django-breadcrumbs
 install hg+https://bitbucket.org/ubernostrum/django-registration django-registration
