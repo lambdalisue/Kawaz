@@ -39,6 +39,7 @@ install docutils
 install south
 install pyyaml
 install whoosh
+install markdown
 install django
 install django-haystack
 install django-compress
@@ -65,4 +66,10 @@ git clone git@github.com:lambdalisue/django-codemirror-widget.git "$DST/django-c
 git clone git@github.com:lambdalisue/django-modify-history.git "$DST/django-modify-history"
 
 hg clone https://lambdalisue@bitbucket.org/lambdalisue/django-piston "$DST/django-piston"
+
+# Copy local_settings, local_site
+echo "Copy local_settings.py and local_site.py"
+cp ../src/Kawaz/local_settings.develop.py ../src/Kawaz/local_settings.py
+cp ../src/Kawaz/local_site.develop.py ../src/Kawaz/local_site.py
+
 echo "Done."

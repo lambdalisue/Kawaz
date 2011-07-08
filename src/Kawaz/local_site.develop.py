@@ -48,4 +48,4 @@ for path in PYTHON_PATHS:
 #-----------------------------------------------------
 
 # Mark as loaded
-LOCAL_PRE_SETTINGS_LOADED = True
+LOCAL_SITE_LOADED = True
